@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>spine test 38</title>
+<style>body{margin:0;background:#101018}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="440" height="440"></canvas>
+<script src="sw38.js"></script>
+<script>
+var NAME = "amazon/Amazon_A_1";
+var canvas = document.getElementById("c");
+var gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
+var renderer = new spine.webgl.SceneRenderer(canvas, gl);
+var am = new spine.webgl.AssetManager(gl, "assets/spine/");
+
+function fail(where, e) {
+  document.title = "ERR " + where + ": " + (e && e.message ? e.message : e);
+  console.error(where, e);
+}
+
+var atlasRef = null;
+  am.loadTextureAtlas(NAME + ".atlas", function (p1, atlas) {
+  atlasRef = atlas;
+  am.loadBinary(NAME + ".skel", function (p2, bytes) {
+    try {
+      var skelData = bytes;
+      if (!skelData.animations) {
+        var raw = bytes instanceof ArrayBuffer ? bytes : bytes.buffer;
+        skelData = new spine.SkeletonBinary(new spine.AtlasAttachmentLoader(atlasRef))
+          .readSkeletonData(new Uint8Array(raw));
+      }
+      var skeleton = new spine.Skeleton(skelData);
+      var state = new spine.AnimationState(new spine.AnimationStateData(skelData));
+      var names = skelData.animations.map(function (a) { return a.name; });
+      console.log("anims:", names.join(","));
+      if (names.length) state.setAnimation(0, names[0], true);
+
+      renderer.camera.viewportWidth = canvas.width;
+      renderer.camera.viewportHeight = canvas.height;
+      renderer.camera.position.set(skelData.x, skelData.y);
+      renderer.camera.zoom = 0.62;
+      renderer.camera.update();
+
+      var last = Date.now();
+      (function frame() {
+        var now = Date.now(), dt = Math.min(0.05, (now - last) / 1000);
+        last = now;
+        state.update(dt);
+        state.apply(skeleton);
+        skeleton.updateWorldTransform();
+        gl.clearColor(0.06, 0.06, 0.09, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        renderer.drawSkeleton(skeleton, false);
+        requestAnimationFrame(frame);
+      })();
+
+      document.title = "ok " + names.length + " anims " + skelData.width + "x" + skelData.height;
+    } catch (e) { fail("build", e); }
+  }, function (e) { fail("binary", e); });
+}, function (e) { fail("atlas", e); });
+</script>
+</body>
+</html>

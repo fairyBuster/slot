@@ -1,0 +1,9 @@
+# data runtime (user/DB — jangan ikut ke-upload)
+data/
+
+# log
+*.log
+
+# OS
+Thumbs.db
+Desktop.ini

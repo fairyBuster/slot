@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#12040c">
+<title>Jackpot Odyssey — Web</title>
+<link rel="stylesheet" href="style.css?v=41">
+</head>
+<body>
+<div id="stage">
+
+  <!-- ================= LOBBY ================= -->
+  <section id="lobby" class="screen active">
+    <img class="bg" src="assets/lobby/bg.png" alt="">
+
+    <header class="topbar">
+      <img class="tb-bg" src="assets/lobby/topbar_bg.png" alt="">
+      <div class="tb-left">
+        <button class="hbtn" data-act="event" title="Event"><img src="assets/ui/ico_home.png" alt=""><b>EVENT</b></button>
+        <div class="coinpill"><img src="assets/ui/ico_coin.png" alt=""><span id="bal-h">0</span></div>
+      </div>
+      <div class="tb-mid">
+        <button class="tbtn" data-act="buy"><img src="assets/ui/btn_buy.png?v=2" alt="BUY"></button>
+        <button class="tbtn" data-act="sale"><img src="assets/ui/btn_sale.png?v=2" alt="SALE"></button>
+        <button class="tbtn" data-act="deposit" title="Deposit"><img src="assets/ui/btn_deposit.png?v=3" alt="DEPOSIT"></button>
+        <button class="tbtn" data-act="withdraw" title="Withdraw"><img src="assets/ui/btn_withdraw.png?v=3" alt="WITHDRAW"></button>
+        <div class="lv"><img src="assets/ui/ico_sphere.png" alt=""><b>LV.1</b></div>
+      </div>
+      <div class="tb-right">
+        <button class="hbtn noticebtn" data-act="notice" title="Pengumuman"><i>!</i><b>INFO</b></button>
+        <button class="hbtn mutebtn" id="mute" title="Suara"><i>&#9835;</i><b>SUARA</b></button>
+        <button class="hbtn" data-act="settings"><img src="assets/ui/ico_gear.png" alt=""><b>SETELAN</b></button>
+      </div>
+    </header>
+
+    <!-- panel kanan: 1st time special offer -->
+    <div class="fbcard offer">
+      <b class="o1">1ST TIME</b><b class="o2">SPECIAL OFFER</b>
+      <span class="was">WAS <s>Rp 29.990</s></span>
+      <span class="now">NOW ONLY</span>
+      <span class="price">Rp 1.990</span>
+      <span class="fbreward"><img src="assets/lobby/coin.png" alt=""><b class="num">250K</b></span>
+      <button class="mini buy wide" data-act="offer">ONLY Rp 1.990</button>
+      <span class="dots"><i></i><i class="on"></i></span>
+    </div>
+
+    <!-- kabinet HOT SLOT (art asli + animasi) -->
+    <div class="cabinet hot">
+      <img class="cab-bg" src="assets/anim/cabinet_hot.gif" alt="">
+      <img class="cab-bg cab-bg-r" src="assets/anim/cabinet_hot.gif" alt="">
+      <span class="animwrap cab-title"><img src="assets/anim/hot_zi_sheet.png" alt="Hot Slot"></span>
+      <span class="animwrap star st1"><img src="assets/anim/hot_star1_sheet.png" alt=""></span>
+      <span class="animwrap star st2"><img src="assets/anim/hot_star2_sheet.png" alt=""></span>
+      <span class="animwrap star st3"><img src="assets/anim/hot_star3_sheet.png" alt=""></span>
+      <div class="panes">
+        <button class="pane" data-machine="1016"><img class="g" src="assets/machines/1016.png" alt=""><i class="cash">BOOK OF THE<br>ANCIENTS</i></button>
+        <button class="pane" data-machine="1035"><img class="g" src="assets/machines/1035.png" alt=""><i class="cash">POWER<br>ZEUS</i></button>
+      </div>
+      <span class="animwrap lamp l1"><img src="assets/anim/hot_deng1_sheet.png" alt=""></span>
+      <span class="animwrap lamp l2"><img src="assets/anim/hot_deng2_sheet.png" alt=""></span>
+    </div>
+
+    <!-- kabinet NEW SLOT (art asli + animasi) -->
+    <div class="cabinet new">
+      <img class="cab-bg" src="assets/anim/cabinet_new.gif" alt="">
+      <img class="cab-bg cab-bg-r" src="assets/anim/cabinet_new.gif" alt="">
+      <span class="animwrap cab-title"><img src="assets/anim/new_zi_sheet.png" alt="New Slot"></span>
+      <span class="animwrap star st1"><img src="assets/anim/new_star1_sheet.png" alt=""></span>
+      <span class="animwrap star st2"><img src="assets/anim/new_star2_sheet.png" alt=""></span>
+      <span class="animwrap star st3"><img src="assets/anim/new_star3_sheet.png" alt=""></span>
+      <div class="panes">
+        <button class="pane" data-machine="1044"><img class="g" src="assets/machines/1044.png" alt=""><img class="nb" src="assets/lobby/new_badge.png" alt=""><i class="cash">HONEY<br>BEAR</i></button>
+        <button class="pane" data-machine="1046"><img class="g" src="assets/machines/1046.png" alt=""><img class="nb" src="assets/lobby/new_badge.png" alt=""><i class="cash">MOLE'S<br>TREASURE</i></button>
+      </div>
+      <span class="animwrap lamp l1"><img src="assets/anim/new_deng1_sheet.png" alt=""></span>
+      <span class="animwrap lamp l2"><img src="assets/anim/new_deng2_sheet.png" alt=""></span>
+    </div>
+
+    <button class="slotsign" data-act="allgames"><b>SLOTS</b><i>&#9654;</i></button>
+
+    <nav class="navbar">
+      <div class="nbar-wrap"><img class="nbar-bg" src="assets/anim/navbar_bg_sheet.png" alt=""></div>
+      <div class="nav-left">
+        <button class="nav" data-act="mission" title="Misi harian"><span class="animwrap nq"><img src="assets/anim/nav_quest_sheet.png" alt=""></span><b>MISI</b></button>
+        <button class="nav" data-act="login" title="Login"><img src="assets/lobby/nav_login.png" alt=""><b>LOGIN</b></button>
+        <button class="nav plate" data-act="quests" title="Quest"><span class="pw"><img class="disc" src="assets/lobby/plate.png" alt=""><b>QUEST</b></span></button>
+      </div>
+      <button class="nav-timer" data-act="event" title="Event">
+        <img class="evbtn" src="assets/anim/ev_button.png" alt="EVENT">
+        <span class="evtime"><img src="assets/anim/ev_timebg.png" alt=""><b id="timer2">21:33:21</b></span>
+      </button>
+      <div class="nav-right">
+        <button class="nav plate gold" data-act="collect" title="Bonus harian"><span class="pw"><img class="disc" src="assets/lobby/plate.png" alt=""><b>COLLECT</b></span></button>
+        <button class="nav" data-act="vip" title="VIP"><img src="assets/lobby/nav_vip.png" alt=""><b>VIP</b></button>
+        <button class="nav" data-act="mail" title="Kotak masuk"><span class="animwrap nm"><img src="assets/anim/nav_mail_sheet.png" alt=""></span><i class="badge" id="mailbadge">1</i><b>MAIL</b></button>
+        <button class="nav plate" data-act="melody" title="Melodi"><span class="pw"><img class="disc" src="assets/lobby/plate.png" alt=""><b>MELODI</b></span></button>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ================= SLOT ================= -->
+  <section id="slot" class="screen">
+    <img class="bg gamebg" id="game-bg" src="assets/lobby/bg.png" alt="">
+    <img class="game-cab" id="game-cab" src="" alt="">
+
+    <header class="topbar">
+      <img class="tb-bg" src="assets/lobby/topbar_bg.png" alt="">
+      <div class="tb-left">
+        <button class="hbtn" data-act="back"><img src="assets/ui/ico_home.png" alt=""><b>LOBI</b></button>
+        <div class="coinpill"><img src="assets/ui/ico_coin.png" alt=""><span id="bal">0</span></div>
+      </div>
+      <div class="tb-mid">
+        <button class="tbtn" data-act="buy"><img src="assets/ui/btn_buy.png?v=2" alt="BUY"></button>
+        <button class="tbtn" data-act="sale"><img src="assets/ui/btn_sale.png?v=2" alt="SALE"></button>
+        <button class="tbtn" data-act="deposit" title="Deposit"><img src="assets/ui/btn_deposit.png?v=3" alt="DEPOSIT"></button>
+        <button class="tbtn" data-act="withdraw" title="Withdraw"><img src="assets/ui/btn_withdraw.png?v=3" alt="WITHDRAW"></button>
+        <div class="lv"><img src="assets/ui/ico_sphere.png" alt=""><b>LV.1</b></div>
+      </div>
+      <div class="tb-right">
+        <button class="hbtn jp" data-act="jackpot"><b>JP</b></button>
+        <button class="hbtn mutebtn" id="mute2" title="Suara"><i>&#9835;</i><b>SUARA</b></button>
+        <button class="hbtn" data-act="settings"><img src="assets/ui/ico_gear.png" alt=""><b>SETELAN</b></button>
+      </div>
+    </header>
+
+    <div class="reels-frame">
+      <div class="reels" id="reels"></div>
+    </div>
+
+    <footer class="bottombar">
+      <img class="strip" src="assets/ui/bottom.png" alt="">
+      <div class="winrow">
+        <img class="lbl" src="assets/ui/totalwin.png" alt="">
+        <b class="num" id="win">0</b>
+      </div>
+      <div class="betrow">
+        <div class="knob"><span id="timer">21:33:21</span></div>
+        <button class="rbtn" id="minus"><img src="assets/ui/minus.png" alt=""><b>TURUN</b></button>
+        <div class="betbox">
+          <b class="num" id="bet">200.000</b>
+          <img class="lbl sm" src="assets/ui/totalbet.png" alt="">
+        </div>
+        <button class="rbtn" id="plus"><img src="assets/ui/plus.png" alt=""><b>NAIK</b></button>
+        <button class="chipbtn" data-act="maxbet"><img src="assets/ui/chipbtn.png" alt=""><b>MAX</b></button>
+      </div>
+      <button class="autobtn" id="auto"><b>AUTO</b></button>
+      <button class="spin" id="spin"><img src="assets/anim/spin_btn.png" alt="SPIN"></button>
+    </footer>
+  </section>
+
+  <!-- semua game -->
+  <div id="gameslist" class="page gamelist">
+    <span class="rayswrap"><img class="rays" src="assets/ui/ico_star.png" alt=""></span>
+    <div class="gtitle">
+      <img src="assets/lobby/star1.png" alt=""><div class="pgtitle">ALL SLOTS</div><img src="assets/lobby/star2.png" alt="">
+    </div>
+    <div class="ggrid" id="ggrid"></div>
+    <button class="pgclose" data-act="close">&#10005;</button>
+  </div>
+
+  <!-- profil dropdown -->
+  <div id="profile" class="dropdown">
+    <div class="dhead"><img src="assets/ui/ico_home.png" alt=""><b id="pname">MY<br>PROFILE</b></div>
+    <button data-act="settings"><img src="assets/ui/ico_gear.png" alt=""> SETTINGS</button>
+    <button data-act="contact"><span class="ic">?</span> CONTACT US</button>
+    <button data-act="mail"><span class="ic">✉</span> INBOX <i class="badge" id="mailbadge2">1</i></button>
+    <button id="do-logout"><span class="ic">↩</span> LOGOUT</button>
+  </div>
+
+  <!-- popup VIP -->
+  <div id="vip" class="sheet">
+    <div class="vipwrap">
+      <div class="pgtitle">VIP</div>
+      <div class="vipbox">
+      <div class="vipbar">
+        <span class="rank bronze" id="vip-rank">1</span>
+        <i class="track"><em id="vip-fill"></em></i>
+        <span class="rank silver">2</span>
+        <b id="vip-pct">0%</b><em id="vip-pts">0</em>
+      </div>
+      <div class="viplbl"><span>YOUR LV</span><span>CURRENT VIP POINTS: <b id="vip-pts2">0</b></span><span>NEXT LV</span></div>
+      <table class="viptbl">
+        <tr><th>BENEFITS</th><th class="bronze">1 BRONZE</th><th class="silver">2 SILVER</th><th class="gold">3 GOLD</th><th class="plat">4 PLATINUM</th></tr>
+        <tr><td>Coin Packages</td><td class="on">x1</td><td>x1.5</td><td>x2.5</td><td>x4</td></tr>
+        <tr><td>Store Gift</td><td class="on">x1</td><td>x1.5</td><td>x2.5</td><td>x4</td></tr>
+        <tr><td>VIP Points</td><td class="on">x1</td><td>x1.5</td><td>x2</td><td>x3</td></tr>
+        <tr><td>Free Coins</td><td class="on">+15%</td><td>+30%</td><td>+50%</td><td>+100%</td></tr>
+      </table>
+      <div class="vipclaim"><span>VIP DAILY REWARD</span><button class="mini buy" data-act="vipclaim">KLAIM +50 RB</button></div>
+      <span class="vipdots"><i class="on"></i><i></i><i></i></span>
+      </div>
+      <button class="pgclose" data-act="close">✕</button>
+    </div>
+  </div>
+
+  <!-- popup DAILY BONUS -->
+  <div id="daily" class="sheet">
+    <div class="sheetbox dailybox">
+      <div class="pgtitle big2">DAILY BONUS</div>
+      <div class="pgsub">MISS A DAY YOU'LL HAVE TO START OVER</div>
+      <div class="dgrid">
+      <div class="dday" data-day="1"><b>DAY 1</b><span class="chk">✓</span><em>10K</em></div>
+      <div class="dday" data-day="2"><b>DAY 2</b><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>15K</em></span><span class="dr gem"><em>10</em></span></div>
+      <div class="dday" data-day="3"><b>DAY 3</b><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>20K</em></span></div>
+      <div class="dday" data-day="4"><b>DAY 4</b><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>30K</em></span><span class="dr gem"><em>100</em></span></div>
+      <div class="dday" data-day="5"><b>DAY 5</b><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>40K</em></span><span class="dr gem"><em>15</em></span></div>
+      <div class="dday" data-day="6"><b>DAY 6</b><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>50K</em></span></div>
+      <div class="dday seven" data-day="7"><b>DAY 7</b><span class="dr gem"><em>20</em></span><span class="dr"><em>200</em></span><span class="dr"><img src="assets/lobby/coin.png" alt=""><em>75K</em></span></div>
+    </div>
+    <div class="dchests">
+      <span class="reward">REWARD<br>DAYS<br><b id="reward-days">1/30</b></span>
+      <span class="chest">8</span><span class="chest">15</span><span class="chest">22</span><span class="chest">30</span>
+      </div>
+      <button class="pgclose" data-act="close">✕</button>
+    </div>
+  </div>
+
+  <!-- store -->
+  <div id="store" class="sheet"><div class="sheetbox">
+    <img class="award2" src="assets/lobby/award2.png" alt="">
+    <b class="num big">TOKO KOIN</b>
+    <div class="packs" id="packs"></div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- deposit -->
+  <div id="deppop" class="sheet"><div class="sheetbox wide">
+    <img class="award2" src="assets/lobby/award2.png" alt="">
+    <b class="num big">DEPOSIT</b>
+    <label>Metode pembayaran</label>
+    <div class="banklist">
+      <button class="bank on" data-bank="BCA"><i class="bico">BCA</i><b>Bank BCA</b><em>VA · Instan</em></button>
+      <button class="bank" data-bank="BRI"><i class="bico">BRI</i><b>Bank BRI</b><em>VA · Instan</em></button>
+      <button class="bank" data-bank="DANA"><i class="bico">DNA</i><b>DANA</b><em>E-Wallet</em></button>
+      <button class="bank" data-bank="QRIS"><i class="bico">QRS</i><b>QRIS</b><em>Semua app</em></button>
+    </div>
+    <label>Jumlah top up</label>
+    <div class="amtgrid">
+      <button class="amt on" data-dep="100000000">100 JT</button>
+      <button class="amt" data-dep="250000000">250 JT</button>
+      <button class="amt" data-dep="500000000">500 JT</button>
+      <button class="amt hot" data-dep="1000000000">1 M</button>
+    </div>
+    <input class="depcustom" id="dep-custom" type="text" inputmode="numeric" placeholder="Atau nominal lain, contoh: 5000000">
+    <div class="depsum">TOTAL: <b class="num" id="dep-sum">100 JT</b></div>
+    <button class="mini buy wide" id="do-deposit">DEPOSIT SEKARANG</button>
+    <button class="mini wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- withdraw -->
+  <div id="wdpop" class="sheet"><div class="sheetbox wide">
+    <img class="award2" src="assets/lobby/award1.png" alt="">
+    <b class="num big">WITHDRAW</b>
+    <label>Saldo tersedia: <b class="num" id="wd-bal">0</b></label>
+    <div class="wdrow">
+      <button class="mini sale" data-wd="25">25%</button>
+      <button class="mini sale" data-wd="50">50%</button>
+      <button class="mini sale" data-wd="100">SEMUA</button>
+      <input id="wd-amt" inputmode="numeric" placeholder="Jumlah koin">
+    </div>
+    <label>Rekening tujuan</label>
+    <div class="banklist">
+      <button class="bank on" data-wbank="BCA"><i class="bico">BCA</i><b>Bank BCA</b><em>1234-5678-90</em></button>
+      <button class="bank" data-wbank="DANA"><i class="bico">DNA</i><b>DANA</b><em>0812-xxxx-xxx</em></button>
+    </div>
+    <button class="mini buy wide" id="do-withdraw">TARIK SEKARANG</button>
+    <button class="mini wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- settings -->
+  <div id="settings" class="sheet"><div class="sheetbox">
+    <b class="num big">PENGATURAN</b>
+    <label><input type="checkbox" id="opt-sound" checked> Suara</label>
+    <label><input type="checkbox" id="opt-fast"> Spin cepat</label>
+    <button class="mini sale" id="opt-reset">Reset taruhan</button>
+    <button class="mini buy" data-act="close">TUTUP</button>
+    <i class="ver">Jackpot Odyssey 1.1.11 · web build</i>
+  </div></div>
+
+  <!-- pengumuman -->
+  <div id="notice" class="sheet"><div class="noticebox">
+    <img class="nb-bg" src="assets/lobby/notice_bg.png" alt="">
+    <img class="nb-title" src="assets/lobby/notice_title.png" alt="">
+    <div class="nb-body">
+      <b>Selamat datang di Jackpot Odyssey!</b>
+      <p>• 85 mesin slot siap dimainkan<br>• Bonus harian tiap hari<br>• Event Monopoly berhadiah 250 RB<br>• Jackpot besar menantimu</p>
+    </div>
+    <button class="mini buy" data-act="close">OK</button>
+  </div></div>
+
+  <!-- kotak masuk -->
+  <div id="mailpop" class="sheet"><div class="mailbox">
+    <b class="num big">KOTAK MASUK</b>
+    <div class="mlist" id="mlist"></div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- login -->
+  <div id="loginpop" class="sheet"><div class="sheetbox">
+    <b class="num big">MASUK</b>
+    <label>Nama panggilan</label>
+    <input id="nick" maxlength="12" placeholder="Player777">
+    <button class="mini buy wide" id="do-login">MASUK SEKARANG</button>
+    <button class="mini sale wide" data-act="fb">Lanjutkan dengan Facebook</button>
+    <button class="mini wide" data-act="close">Nanti saja</button>
+  </div></div>
+
+  <!-- quest -->
+  <div id="questpop" class="sheet"><div class="sheetbox wide">
+    <img class="award2" src="assets/lobby/award2.png" alt="">
+    <b class="num big">QUEST</b>
+    <div class="qlist" id="qlist"></div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- misi harian -->
+  <div id="missionpop" class="sheet"><div class="sheetbox wide">
+    <img class="award2" src="assets/lobby/award1.png" alt="">
+    <b class="num big">MISI HARIAN</b>
+    <div class="qlist" id="missionlist"></div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- melodi -->
+  <div id="melodypop" class="sheet"><div class="sheetbox">
+    <b class="num big">MELODI</b>
+    <label>Musik latar <input type="checkbox" id="opt-bgm" checked></label>
+    <label class="vollbl">Volume <input type="range" id="vol" min="0" max="100" value="32"></label>
+    <div class="melbtns">
+      <button class="mini sale" data-mel="bigwin">Jingle Menang</button>
+      <button class="mini sale" data-mel="jackpot_grand">Jingle Jackpot</button>
+      <button class="mini buy" data-mel="bgm_base">BGM Utama</button>
+    </div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- event -->
+  <div id="eventpop" class="sheet"><div class="sheetbox wide evbox">
+    <img class="award" src="assets/lobby/award1.png" alt="">
+    <b class="num big">EVENT SPESIAL</b>
+    <div class="evrow">
+      <img class="evboard" src="assets/anim/board.gif" alt="">
+      <div class="evitems">
+        <span class="evitem"><img src="assets/anim/ev_monopoly.gif" alt=""><span><b>MONOPOLY</b><em>Hadiah 250 RB</em></span></span>
+        <span class="evitem"><img src="assets/lobby/ev_hoard.png" alt=""><span><b>SECRET HOARD</b><em>Gems x500</em></span></span>
+        <span class="evitem"><img src="assets/lobby/ev_tanqiu.png" alt=""><span><b>TREASURE HUNT</b><em>Koin 150 RB</em></span></span>
+      </div>
+    </div>
+    <div class="evcount">Berakhir dalam <b id="timer3">21:33:21</b></div>
+    <button class="mini buy wide" data-act="evclaim">KLAIM HADIAH EVENT +250 RB</button>
+    <button class="mini wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- kontak -->
+  <div id="contactpop" class="sheet"><div class="sheetbox">
+    <b class="num big">HUBUNGI KAMI</b>
+    <p class="clines">Email: support@jackpotodyssey.com<br>Web: www.jackpotodyssey.com</p>
+    <div class="rate" id="rate" title="Beri rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <button class="mini buy wide" data-act="close">TUTUP</button>
+  </div></div>
+
+  <!-- jackpot -->
+  <div id="jackpot" class="overlay">
+    <img class="rays" src="assets/ui/ico_star.png" alt="">
+    <img class="jpwheel" src="assets/anim/wheel.gif" alt="">
+    <div class="jpbox">
+      <b class="jptitle num">JACKPOT!</b>
+      <b class="num jpamt" id="jp-amt">0</b>
+      <button class="mini buy wide" data-act="close">TUTUP</button>
+    </div>
+  </div>
+
+  <!-- admin panel -->
+  <div id="adminpop" class="sheet">
+    <div class="sheetbox adminbox">
+      <b class="num big">ADMIN PANEL</b>
+      <div id="admin-login">
+        <input id="ad-pass" type="password" placeholder="Password admin">
+        <button class="mini buy wide" id="ad-do-login">MASUK ADMIN</button>
+        <button class="mini wide" data-act="close">TUTUP</button>
+      </div>
+      <div id="admin-dash" style="display:none">
+        <div class="ad-stats" id="ad-stats"></div>
+        <div class="ad-tabs">
+          <button class="lg-tab on" data-at="users">USER</button>
+          <button class="lg-tab" data-at="txs">TRANSAKSI</button>
+          <button class="lg-tab" data-at="mail">KIRIM MAIL</button>
+          <button class="lg-tab" data-at="games">GAME</button>
+        </div>
+        <div class="ad-body">
+          <div class="ad-pane" id="ad-users"></div>
+          <div class="ad-pane" id="ad-txs" style="display:none"></div>
+          <div class="ad-pane" id="ad-games" style="display:none"></div>
+          <div class="ad-pane" id="ad-mail" style="display:none">
+            <label>Target: <select id="ad-m-target"><option value="all">SEMUA USER</option></select></label>
+            <input id="ad-m-title" maxlength="60" placeholder="Judul pesan">
+            <input id="ad-m-reward" inputmode="numeric" placeholder="Hadiah koin (opsional)">
+            <textarea id="ad-m-body" rows="2" placeholder="Isi pesan"></textarea>
+            <button class="mini buy wide" id="ad-m-send">KIRIM MAIL</button>
+          </div>
+        </div>
+        <div class="ad-foot">
+          <button class="mini wide" id="ad-logout">LOGOUT ADMIN</button>
+          <button class="mini wide" data-act="close">TUTUP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="fx" class="fx"></div>
+  <div id="toast" class="toast"></div>
+</div>
+
+  <!-- landing: halaman perusahaan (di luar stage biar responsif di HP) -->
+  <div id="landing" class="landing">
+    <nav class="lg-nav">
+      <span class="lg-brand"><img src="assets/lobby/cabinet.png" alt=""><b class="num">JACKPOT ODYSSEY</b></span>
+      <span class="lg-links">
+        <a href="#lg-beranda">BERANDA</a>
+        <a href="#lg-games">GAME</a>
+        <a href="#lg-fitur">KEUNGGULAN</a>
+        <a href="#lg-foot">KONTAK</a>
+      </span>
+      <span class="lg-auth">
+        <button class="lg-tab on lg-navbtn" data-lt="login">LOGIN</button>
+        <button class="lg-tab gold lg-navbtn" data-lt="register">DAFTAR</button>
+      </span>
+    </nav>
+
+    <section class="lg-hero" id="lg-beranda">
+      <span class="rayswrap"><img class="rays" src="assets/ui/ico_star.png" alt=""></span>
+      <img class="lg-cab" src="assets/lobby/cabinet.png" alt="">
+      <img class="lg-coin c1" src="assets/lobby/coin.png" alt="">
+      <img class="lg-coin c2" src="assets/lobby/coin.png" alt="">
+      <img class="lg-coin c3" src="assets/lobby/coin.png" alt="">
+      <b class="lg-hero-title num">JACKPOT ODYSSEY</b>
+      <i class="lg-hero-sub">SLOT · FISHING · PLINKO — Kemenangan besar menanti Anda</i>
+      <div class="lg-cta">
+        <button class="lg-tab gold lg-big" data-lt="register">DAFTAR GRATIS</button>
+        <button class="lg-tab lg-big" data-lt="login">MAIN SEKARANG</button>
+      </div>
+      <div class="lg-stats">
+        <span><b class="num">12.500+</b>Pemain Aktif</span>
+        <span><b class="num">85</b>Pilihan Game</span>
+        <span><b class="num">4.9</b>Rating Pemain</span>
+        <span><b class="num">24/7</b>Layanan</span>
+      </div>
+    </section>
+
+    <section class="lg-sec" id="lg-games">
+      <b class="lg-sec-title num">GAME POPULER</b>
+      <i class="lg-sec-sub">Koleksi slot terbaik, semuanya bisa dimainkan setelah login</i>
+      <div class="lg-gamegrid">
+        <figure><img src="assets/machines/1016.png" alt=""><figcaption>Book of the Ancients</figcaption></figure>
+        <figure><img src="assets/machines/1035.png" alt=""><figcaption>Power Zeus</figcaption></figure>
+        <figure><img src="assets/machines/1044.png" alt=""><figcaption>Honey Bear</figcaption></figure>
+        <figure><img src="assets/machines/1046.png" alt=""><figcaption>Mole's Treasure</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="lg-sec" id="lg-fitur">
+      <b class="lg-sec-title num">KEUNGGULAN KAMI</b>
+      <i class="lg-sec-sub">Kenapa pemain memilih Jackpot Odyssey</i>
+      <div class="lg-cards">
+        <div class="lg-card"><img src="assets/lobby/coin.png" alt=""><b>Deposit Cepat</b><span>Top up diproses &amp; diverifikasi admin dengan cepat</span></div>
+        <div class="lg-card"><img src="assets/lobby/award2.png" alt=""><b>Hadiah Melimpah</b><span>Misi harian, quest &amp; bonus login setiap hari</span></div>
+        <div class="lg-card"><img src="assets/lobby/plate.png" alt=""><b>VIP Eksklusif</b><span>Naikkan rank VIP &amp; klaim reward lebih besar</span></div>
+        <div class="lg-card"><img src="assets/ui/ico_star.png" alt=""><b>Layanan 24/7</b><span>Tim dukungan siap membantu kapan pun</span></div>
+      </div>
+    </section>
+
+    <img class="lg-banner" src="assets/lobby/banner.png" alt="">
+
+    <footer class="lg-foot" id="lg-foot">
+      <span class="lg-fbrand"><img src="assets/lobby/cabinet.png" alt=""><b class="num">JACKPOT ODYSSEY</b></span>
+      <span class="lg-copy">© 2026 Jackpot Odyssey. Semua hak dilindungi.</span>
+      <span class="lg-flinks">
+        <a href="#lg-beranda">Beranda</a>
+        <a href="#lg-games">Game</a>
+        <a href="#lg-fitur">Keunggulan</a>
+        <button class="lg-admin" id="lg-admin">LOGIN ADMIN</button>
+      </span>
+    </footer>
+
+    <!-- modal login/register -->
+    <div class="lg-modal" id="lgmodal">
+      <div class="lg-box">
+        <button class="lg-x" data-act="lgclose" aria-label="Tutup">✕</button>
+        <img class="lg-logo" src="assets/lobby/cabinet.png" alt="">
+        <b class="lg-title num">JACKPOT ODYSSEY</b>
+        <i class="lg-sub">SLOT · FISHING · PLINKO</i>
+        <div class="lg-tabs">
+          <button class="lg-tab on" data-lt="login">LOGIN</button>
+          <button class="lg-tab" data-lt="register">REGISTER</button>
+        </div>
+        <div class="lg-form" id="lg-login">
+          <input id="lg-user" maxlength="16" placeholder="Username">
+          <input id="lg-pass" type="password" maxlength="24" placeholder="Password">
+          <button class="mini buy wide" id="lg-do-login">MASUK &amp; MAIN</button>
+        </div>
+        <div class="lg-form" id="lg-register" style="display:none">
+          <input id="rg-user" maxlength="16" placeholder="Username (3-16 huruf/angka)">
+          <input id="rg-nick" maxlength="14" placeholder="Nama panggilan">
+          <input id="rg-pass" type="password" maxlength="24" placeholder="Password (min 4 karakter)">
+          <button class="mini sale wide" id="rg-do-register">DAFTAR SEKARANG</button>
+        </div>
+        <i class="lg-err" id="lg-err"></i>
+      </div>
+    </div>
+  </div>
+
+<script src="slot.js"></script>
+<script src="machines.js"></script>
+<script src="app.js?v=14"></script>
+</body>
+</html>

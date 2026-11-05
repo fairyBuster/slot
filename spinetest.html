@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>spine test</title>
+<style>body{margin:0;background:#101018}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="420" height="420"></canvas>
+<script src="spine-webgl.js"></script>
+<script>
+var NAME = "amazon/Amazon_A_1";
+var canvas = document.getElementById("c");
+var gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
+var renderer = new spine.SceneRenderer(canvas, gl);
+var am = new spine.AssetManager(gl, "assets/spine/");
+
+try {
+  am.loadTextureAtlas(NAME + ".atlas");
+  am.loadBinary(NAME + ".skel");
+  am.loadAll().then(function () {
+    var atlas = am.require(NAME + ".atlas");
+    var skelData = am.require(NAME + ".skel");
+    if (!skelData.animations) {
+      var raw = skelData instanceof ArrayBuffer ? skelData : skelData.buffer || skelData;
+      skelData = new spine.SkeletonBinary(new spine.AtlasAttachmentLoader(atlas)).readSkeletonData(new Uint8Array(raw));
+    }
+    var skeleton = new spine.Skeleton(skelData);
+    var state = new spine.AnimationState(new spine.AnimationStateData(skelData));
+    var anims = skelData.animations.map(function (a) { return a.name; });
+    console.log("anims:", anims.join(","));
+    if (anims.length) state.setAnimation(0, anims[0], true);
+    skeleton.setToSetupPose();
+
+    var last = Date.now();
+    function frame() {
+      var now = Date.now(), dt = (now - last) / 1000;
+      last = now;
+      state.update(dt);
+      state.apply(skeleton);
+      skeleton.updateWorldTransform();
+      gl.clearColor(0.06, 0.06, 0.09, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      renderer.draw(skeleton);
+      requestAnimationFrame(frame);
+    }
+    frame();
+    document.title = "ok " + anims.length + " anims, size " + skelData.width + "x" + skelData.height;
+  }).catch(function (e) { var m = e && (e.message || e.msg || (e.length !== undefined ? Array.prototype.map.call(e, function(x){return x && (x.message||x)}).join("; ") : JSON.stringify(e))); document.title = "ERR " + m; console.error("spinefail", e); });
+} catch (e) {
+  document.title = "THROW " + e;
+}
+</script>
+</body>
+</html>

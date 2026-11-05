@@ -1,0 +1,26 @@
+Amazon_A_1.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+yu_13
+  rotate: false
+  xy: 266, 440
+  size: 65, 56
+  orig: 65, 56
+  offset: 0, 0
+  index: -1
+yu_14
+  rotate: false
+  xy: 266, 357
+  size: 38, 81
+  orig: 38, 81
+  offset: 0, 0
+  index: -1
+yu_15
+  rotate: false
+  xy: 0, 0
+  size: 264, 496
+  orig: 264, 496
+  offset: 0, 0
+  index: -1
