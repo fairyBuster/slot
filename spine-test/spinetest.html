@@ -10,7 +10,7 @@ var NAME = "amazon/Amazon_A_1";
 var canvas = document.getElementById("c");
 var gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
 var renderer = new spine.SceneRenderer(canvas, gl);
-var am = new spine.AssetManager(gl, "assets/spine/");
+var am = new spine.AssetManager(gl, "../assets/spine/");
 
 try {
   am.loadTextureAtlas(NAME + ".atlas");

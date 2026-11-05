@@ -1,0 +1,13 @@
+{
+  "name": "jackpot-odyssey",
+  "version": "1.0.0",
+  "description": "Web slot game Jackpot Odyssey (85 game) — Node.js + vanilla JS, tanpa dependency",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

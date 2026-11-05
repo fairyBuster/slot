@@ -34,13 +34,33 @@ Buka http://localhost:8480 — selesai. Tanpa dependency (Node.js bawaan saja).
 | `/register` | Tab REGISTER |
 | `/admin` | Admin panel |
 
-## Struktur asset
+## Deploy (Render.com — gratis)
 
-- `assets/lobby/` — art lobby (kabinet, banner, koin, icon)
-- `assets/game/<id>/` — per game: cabinet, s1..s5 (simbol), s6 (logo)
-- `assets/sfx/` · `assets/anim/` — suara & animasi (spin button dll)
-- `assets/ui/` — ikon UI
-- `machines.js` — daftar 85 game (di-generate dari `tools/build_all_games.py`)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/fairyBuster/slot)
+
+Klik tombol di atas → login GitHub → Render baca `render.yaml` → app jalan otomatis di URL `https://jackpot-odyssey.onrender.com`.
+
+- `PORT` otomatis di-set Render (`server.js` pakai `process.env.PORT || 8480`)
+- Tanpa dependency, tanpa build step
+- Catatan: disk free Render bersifat ephemeral — `data/` (user & transaksi) bisa reset saat redeploy. Untuk produksi serius: pakai persistent disk atau DB eksternal.
+
+## Struktur
+
+```
+web4/
+├── index.html        # halaman utama (landing + lobby + slot)
+├── app.js            # logika client
+├── style.css         # styling
+├── server.js         # backend Node (API + file DB)
+├── slot.js           # mesin slot (dipakai browser & server)
+├── machines.js       # daftar 85 game
+├── package.json      # metadata + start script
+├── render.yaml       # blueprint deploy Render
+├── start.bat         # shortcut jalan di Windows
+├── assets/           # lobby, game/<id>/, sfx, anim, ui, spine
+├── data/             # DB runtime (auto dibuat, tidak ikut repo)
+└── spine-test/       # eksperimen animasi spine (tidak dipakai app)
+```
 
 ## Catatan
 

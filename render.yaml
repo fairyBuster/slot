@@ -1,0 +1,9 @@
+# Blueprint deploy Render.com — satu klik dari tombol "Deploy to Render" di README
+services:
+  - type: web
+    name: jackpot-odyssey
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: node server.js
+    autoDeploy: true

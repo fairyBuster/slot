@@ -5,7 +5,7 @@ var ROOT = __dirname;
 var SLOT = require("./slot.js");
 var BETS = [200, 1000, 5000, 25000, 100000, 500000, 1000000, 2000000];
 var DATA = path.join(ROOT, "data");
-var PORT = 8480;
+var PORT = process.env.PORT || 8480;
 if (!fs.existsSync(DATA)) fs.mkdirSync(DATA);
 
 var FILES = { users: "users.json", txs: "txs.json", mails: "mails.json", admin: "admin.json", games: "games.json" };
